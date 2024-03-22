@@ -5,10 +5,10 @@ const rollback = Math.floor(Math.random() * 100);
 const fullPrice = 100000;
 const adaptive = true;
 
-console.log("Great! it works :-)!");
 console.log(typeof title);
 console.log(typeof fullPrice);
 console.log(typeof adaptive);
+console.log(screens.length);
 const screenPriceInRub = "Стоимость верстки экранов " + screenPrice + " рублей";
 const fullPriceInRub = "Стоимость разработки сайта " + fullPrice + " рублей";
 console.log('"' + screenPriceInRub + '"' + " и " + '"' + fullPriceInRub + '"');
