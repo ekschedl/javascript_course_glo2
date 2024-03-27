@@ -24,8 +24,7 @@ const asking = function () {
   do {
     screenPrice = prompt("Сколько будет стоить данная работа?");
   } while (!isNumber(screenPrice));
-  screenPrice = parseFloat(screenPrice); // Приведем к числу
-
+  screenPrice = parseFloat(screenPrice); // Преобразование строки в число
   adaptive = confirm("Нужен ли адаптив на сайте?");
 };
 
@@ -41,7 +40,7 @@ const getAllServicePrices = function () {
     do {
       price = prompt("Сколько это будет стоить?");
     } while (!isNumber(price));
-    price = parseFloat(price); // Приведем к числу
+    price = parseFloat(price); // Преобразование строки в число
     sum += price;
   }
   return sum;
@@ -74,7 +73,6 @@ const getRollbackMessage = function (price) {
     return "Что-то пошло не так";
   }
 };
-
 asking();
 allServicePrices = getAllServicePrices();
 fullPrice = getFullPrice();
