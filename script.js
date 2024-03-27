@@ -14,19 +14,21 @@ let service2;
 const isNumber = function (num) {
   return !isNaN(parseFloat(num)) && isFinite(num);
 };
+
 const asking = function () {
   title = prompt("Как называется ваш проект?", "Калькулятор верстки");
   screens = prompt(
     "Какие типы экранов нужно разработать?",
     "Простые, Сложные, Интерактивные"
   );
-  screenPrice = prompt("Сколько будет стоить данная работа?");
-
-  while (!isNumber(screenPrice)) {
+  do {
     screenPrice = prompt("Сколько будет стоить данная работа?");
-  }
+  } while (!isNumber(screenPrice));
+  screenPrice = parseFloat(screenPrice); // Приведем к числу
+
   adaptive = confirm("Нужен ли адаптив на сайте?");
 };
+
 const getAllServicePrices = function () {
   let sum = 0;
   for (let i = 0; i < 2; i++) {
@@ -35,7 +37,12 @@ const getAllServicePrices = function () {
     } else if (i === 1) {
       service2 = prompt("Какой дополнительный тип услуги нужен?");
     }
-    sum += +prompt("Сколько это будет стоить?");
+    let price;
+    do {
+      price = prompt("Сколько это будет стоить?");
+    } while (!isNumber(price));
+    price = parseFloat(price); // Приведем к числу
+    sum += price;
   }
   return sum;
 };
@@ -67,6 +74,7 @@ const getRollbackMessage = function (price) {
     return "Что-то пошло не так";
   }
 };
+
 asking();
 allServicePrices = getAllServicePrices();
 fullPrice = getFullPrice();
