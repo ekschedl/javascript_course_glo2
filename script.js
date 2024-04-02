@@ -1,5 +1,3 @@
-"use strict";
-
 const appData = {
   title: "",
   screens: [],
@@ -24,12 +22,27 @@ const appData = {
     return !isNaN(parseFloat(num)) && isFinite(num);
   },
 
+  containsDigits: function (text) {
+    for (let char of text) {
+      if (!isNaN(parseInt(char))) {
+        return true; // Если хотя бы один символ является цифрой, возвращаем true
+      }
+    }
+    return false; // Если не найдено ни одной цифры, возвращаем false
+  },
+
   asking: function () {
     appData.title = prompt("Как называется ваш проект?", "Калькулятор верстки");
 
-    // Проверка на ввод только текста
-    while (!/^[a-zA-Zа-яА-ЯёЁ\s]*$/.test(appData.title.trim())) {
-      appData.title = prompt("Пожалуйста, введите название проекта (текст)");
+    // Проверка на ввод текста с возможными цифрами
+    while (
+      appData.title !== null &&
+      (typeof appData.title !== "string" ||
+        !appData.containsDigits(appData.title))
+    ) {
+      appData.title = prompt(
+        "Пожалуйста, введите название проекта (текст с возможными цифрами)"
+      );
     }
 
     for (let i = 0; i < 2; i++) {
@@ -37,11 +50,6 @@ const appData = {
         "Какие типы экранов нужно разработать?",
         "Простые, Сложные, Интерактивные"
       );
-
-      // Проверка на ввод только текста
-      while (!/^[a-zA-Zа-яА-ЯёЁ\s]*$/.test(name.trim())) {
-        name = prompt("Пожалуйста, введите типы экранов (текст)");
-      }
 
       let price = 0;
 
@@ -54,11 +62,6 @@ const appData = {
 
     for (let i = 0; i < 2; i++) {
       let name = prompt("Какой дополнительный тип услуги нужен? (текст)");
-
-      // Проверка на ввод только текста
-      while (!/^[a-zA-Zа-яА-ЯёЁ\s]*$/.test(name.trim())) {
-        name = prompt("Пожалуйста, введите тип услуги (текст)");
-      }
 
       let price = 0;
 
@@ -110,11 +113,9 @@ const appData = {
   },
 
   logger: function () {
-    for (let key in appData) {
-      console.log(appData.fullPrice);
-      console.log(appData.servicePercentPrice);
-      console.log(appData.screens);
-    }
+    console.log("Full Price: ", appData.fullPrice);
+    console.log("Service Percent Price: ", appData.servicePercentPrice);
+    console.log("Screens: ", appData.screens);
   },
 };
 
