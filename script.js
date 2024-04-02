@@ -31,7 +31,7 @@ const appData = {
 
     while (
       appData.title !== null &&
-      (typeof appData.title !== "string" || !appData.isString(appData.title))
+      (!appData.isString(appData.title) || !appData.title.trim())
     ) {
       appData.title = prompt("Пожалуйста, введите название проекта (текст)");
     }
@@ -43,10 +43,10 @@ const appData = {
           "Какие типы экранов нужно разработать?",
           "Простые, Сложные, Интерактивные"
         );
-        if (name !== null && !isNaN(name)) {
+        if (name !== null && appData.isNumber(name)) {
           alert("Пожалуйста, введите типы экранов (текст)");
         }
-      } while (name !== null && !isNaN(name));
+      } while (name !== null && appData.isNumber(name));
 
       if (name === null) {
         break;
@@ -62,7 +62,17 @@ const appData = {
     }
 
     for (let i = 0; i < 2; i++) {
-      let name = prompt("Какой дополнительный тип услуги нужен? (текст)");
+      let name;
+      do {
+        name = prompt("Какой дополнительный тип услуги нужен? (текст)");
+        if (name !== null && appData.isNumber(name)) {
+          alert("Пожалуйста, введите дополнительный тип услуги (текст)");
+        }
+      } while (name !== null && appData.isNumber(name));
+
+      if (name === null) {
+        break;
+      }
 
       let price = 0;
 
