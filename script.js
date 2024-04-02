@@ -22,34 +22,35 @@ const appData = {
     return !isNaN(parseFloat(num)) && isFinite(num);
   },
 
-  containsDigits: function (text) {
-    for (let char of text) {
-      if (!isNaN(parseInt(char))) {
-        return true; // Если хотя бы один символ является цифрой, возвращаем true
-      }
-    }
-    return false; // Если не найдено ни одной цифры, возвращаем false
+  isString: function (str) {
+    return typeof str === "string" && !isNaN(str);
   },
 
   asking: function () {
     appData.title = prompt("Как называется ваш проект?", "Калькулятор верстки");
 
-    // Проверка на ввод текста с возможными цифрами
     while (
       appData.title !== null &&
-      (typeof appData.title !== "string" ||
-        !appData.containsDigits(appData.title))
+      (typeof appData.title !== "string" || !appData.isString(appData.title))
     ) {
-      appData.title = prompt(
-        "Пожалуйста, введите название проекта (текст с возможными цифрами)"
-      );
+      appData.title = prompt("Пожалуйста, введите название проекта (текст)");
     }
 
     for (let i = 0; i < 2; i++) {
-      let name = prompt(
-        "Какие типы экранов нужно разработать?",
-        "Простые, Сложные, Интерактивные"
-      );
+      let name;
+      do {
+        name = prompt(
+          "Какие типы экранов нужно разработать?",
+          "Простые, Сложные, Интерактивные"
+        );
+        if (name !== null && !isNaN(name)) {
+          alert("Пожалуйста, введите типы экранов (текст)");
+        }
+      } while (name !== null && !isNaN(name));
+
+      if (name === null) {
+        break;
+      }
 
       let price = 0;
 
