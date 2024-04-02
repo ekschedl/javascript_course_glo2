@@ -1,3 +1,31 @@
+// Получаем заголовок с помощью метода getElementsByTagName
+const titleElement = document.getElementsByTagName("h1");
+console.log(titleElement[0]);
+
+const buttons = document.getElementsByClassName("handler_btn");
+console.log(buttons);
+
+const buttonAdd = document.querySelector(".screen-btn");
+console.log(buttonAdd);
+
+const otherItemsPercent = document.querySelectorAll(".other-items.percent");
+console.log(otherItemsPercent);
+const otherItemsNumber = document.querySelectorAll(".other-items.number");
+console.log(otherItemsNumber);
+
+const inputTypeRange = document.querySelector(".rollback input[type='range']");
+console.log(inputTypeRange);
+
+const spanRangeValue = document.querySelector(".rollback .range-value");
+console.log(spanRangeValue);
+
+const totalInputs = document.getElementsByClassName("total-input");
+for (let i = 0; i < totalInputs.length; i++) {
+  console.log(totalInputs[i]);
+}
+let divsScreen = document.querySelectorAll(".screen");
+console.log(divsScreen);
+
 const appData = {
   title: "",
   screens: [],
@@ -23,7 +51,7 @@ const appData = {
   },
 
   isString: function (str) {
-    return typeof str === "string" && !isNaN(str);
+    return typeof str === "string";
   },
 
   asking: function () {
