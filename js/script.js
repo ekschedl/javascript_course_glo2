@@ -24,10 +24,19 @@ console.log(spanRangeValue);
 
 const totalInputs = document.getElementsByClassName("total-input");
 const totalInput1 = totalInputs[0];
+console.log(totalInput1);
+
 const totalInput2 = totalInputs[1];
+console.log(totalInput2);
+
 const totalInput3 = totalInputs[2];
+console.log(totalInput3);
+
 const totalInput4 = totalInputs[3];
+console.log(totalInput4);
+
 const totalInput5 = totalInputs[4];
+console.log(totalInput5);
 
 let divsScreen = document.querySelectorAll(".screen");
 console.log(divsScreen);
