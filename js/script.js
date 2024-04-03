@@ -1,9 +1,12 @@
 // Получаем заголовок с помощью метода getElementsByTagName
-const titleElement = document.getElementsByTagName("h1");
-console.log(titleElement[0]);
+const titleElement = document.getElementsByTagName("h1", [0]);
+console.log(titleElement);
 
-const buttons = document.getElementsByClassName("handler_btn");
-console.log(buttons);
+const startButton = document.getElementsByClassName("handler_btn")[0];
+console.log(startButton);
+
+const resetButton = document.getElementsByClassName("handler_btn")[1];
+console.log(resetButton);
 
 const buttonAdd = document.querySelector(".screen-btn");
 console.log(buttonAdd);
@@ -20,9 +23,12 @@ const spanRangeValue = document.querySelector(".rollback .range-value");
 console.log(spanRangeValue);
 
 const totalInputs = document.getElementsByClassName("total-input");
-for (let i = 0; i < totalInputs.length; i++) {
-  console.log(totalInputs[i]);
-}
+const totalInput1 = totalInputs[0];
+const totalInput2 = totalInputs[1];
+const totalInput3 = totalInputs[2];
+const totalInput4 = totalInputs[3];
+const totalInput5 = totalInputs[4];
+
 let divsScreen = document.querySelectorAll(".screen");
 console.log(divsScreen);
 
