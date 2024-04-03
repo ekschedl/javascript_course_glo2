@@ -23,20 +23,20 @@ const spanRangeValue = document.querySelector(".rollback .range-value");
 console.log(spanRangeValue);
 
 const totalInputs = document.getElementsByClassName("total-input");
-const totalInput1 = totalInputs[0];
-console.log(totalInput1);
+const totalInput = totalInputs[0];
+console.log(totalInput);
 
-const totalInput2 = totalInputs[1];
-console.log(totalInput2);
+const totalCountInput = totalInputs[1];
+console.log(totalCountInput);
 
-const totalInput3 = totalInputs[2];
-console.log(totalInput3);
+const totalCountOtherInput = totalInputs[2];
+console.log(totalCountOtherInput);
 
-const totalInput4 = totalInputs[3];
-console.log(totalInput4);
+const totalFullCount = totalInputs[3];
+console.log(totalFullCount);
 
-const totalInput5 = totalInputs[4];
-console.log(totalInput5);
+const totalCountRollbackInput = totalInputs[4];
+console.log(totalCountRollbackInput);
 
 let divsScreen = document.querySelectorAll(".screen");
 console.log(divsScreen);
