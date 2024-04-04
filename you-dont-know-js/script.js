@@ -31,7 +31,7 @@ const bodyEl = document.querySelector("body");
 bodyEl.style.backgroundImage = 'url("./image/adv.jpg")';
 
 const book3 = document.querySelectorAll(".book")[2];
-const h2book3 = book3.querySelector("h2"); //  querySelector, чтобы получить первый элемент h2 внутри книги
+const h2book3 = book3.querySelector("h2 a"); //  querySelector, чтобы получить первый элемент h2 внутри книги
 h2book3.textContent = "Книга 3. this и Прототипы Объектов"; //
 console.log(h2book3);
 
