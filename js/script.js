@@ -1,5 +1,5 @@
 // Получаем заголовок с помощью метода getElementsByTagName
-const titleElement = document.getElementsByTagName("h1", [0]);
+const titleElement = document.getElementsByClassName("title")[0];
 console.log(titleElement);
 
 const startButton = document.getElementsByClassName("handler_btn")[0];
