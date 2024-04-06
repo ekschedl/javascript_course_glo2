@@ -40,6 +40,12 @@ const appData = {
       const rangeValue = inputRange.value;
       inputRangeValue.textContent = rangeValue;
       appData.rollback = rangeValue;
+
+      // Проверяем, были ли уже выполнены расчеты перед обновлением суммы с учетом отката
+      if (appData.fullPrice !== 0) {
+        appData.getServicePercentPrice(); // Пересчитываем сумму с учетом отката
+        totalCountRollback.value = appData.servicePercentPrice; // Обновляем значение поля "Стоимость с учетом отката"
+      }
     });
   },
   addTitle: function () {
