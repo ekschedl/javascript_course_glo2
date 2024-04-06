@@ -1,4 +1,3 @@
-// Получаем заголовок с помощью метода getElementsByTagName
 const title = document.getElementsByClassName("title")[0];
 
 // const title = document.getElemenByTagName('h1)[0];
