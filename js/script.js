@@ -24,7 +24,7 @@ const appData = {
   totalCountScreens: 0,
   screenPrice: 0,
   adaptive: true,
-  rollback: 10,
+  rollback: 0,
   servicePricesPercent: 0,
   servicePricesNumber: 0,
   fullPrice: 0,
@@ -35,6 +35,8 @@ const appData = {
     appData.addTitle();
     startBtn.addEventListener("click", appData.start);
     buttonPlus.addEventListener("click", appData.addScreenBlock);
+
+    // Устанавливаем начальное значение текста рядом с ползунком
 
     inputRange.addEventListener("input", function () {
       const rangeValue = inputRange.value;
@@ -121,8 +123,9 @@ const appData = {
   },
   addScreenBlock: function () {
     const cloneScreen = screens[0].cloneNode(true);
-
     screens[screens.length - 1].after(cloneScreen);
+    // Обновляем коллекцию экранов после добавления нового экрана
+    screens = document.querySelectorAll(".screen");
   },
   addPrices: function () {
     appData.screenPrice = 0;
