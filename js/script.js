@@ -87,7 +87,6 @@ const appData = {
   },
 
   reset: function () {
-    // Удаляем все дополнительные экраны, кроме первого
     const additionalScreens = document.querySelectorAll(".screen");
     for (let i = 1; i < additionalScreens.length; i++) {
       additionalScreens[i].remove();
@@ -134,13 +133,6 @@ const appData = {
     this.servicePercentPrice = 0;
     this.servicesPercent = {};
     this.servicesNumber = {};
-
-    // Если существует только один экран, клонируем его
-    if (additionalScreens.length === 1) {
-      const firstScreen = document.querySelector(".screen");
-      const clonedScreen = firstScreen.cloneNode(true);
-      firstScreen.after(clonedScreen);
-    }
 
     // Обновляем отображение
     this.showResult();
