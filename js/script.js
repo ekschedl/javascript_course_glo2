@@ -1,16 +1,11 @@
 const title = document.getElementsByClassName("title")[0];
-
 const buttonPlus = document.querySelector(".screen-btn");
-
 const otherItemsPercent = document.querySelectorAll(".other-items.percent");
 const otherItemsNumber = document.querySelectorAll(".other-items.number");
-
 const inputRange = document.querySelector(".rollback input[type='range']");
 const inputRangeValue = document.querySelector(".rollback .range-value");
-
 const startBtn = document.getElementsByClassName("handler_btn")[0];
 const resetBtn = document.getElementsByClassName("handler_btn")[1];
-
 const total = document.getElementsByClassName("total-input")[0];
 const totalCount = document.getElementsByClassName("total-input")[1];
 const totalCountOther = document.getElementsByClassName("total-input")[2];
@@ -48,6 +43,8 @@ const appData = {
         totalCountRollback.value = this.servicePercentPrice; // Обновляем значение поля "Стоимость с учетом отката"
       }
     });
+
+    resetBtn.addEventListener("click", this.reset.bind(this)); // Привязываем метод reset к кнопке "Сброс"
   },
   addTitle: function () {
     console.log(title.textContent);
@@ -68,10 +65,91 @@ const appData = {
       this.addPrices();
       this.getServicePercentPrice();
       this.showResult();
+
+      // Заблокировать все input[type=text] и select с левой стороны
+      screens.forEach((screen) => {
+        const select = screen.querySelector("select");
+        const input = screen.querySelector("input[type=text]");
+        if (select && input) {
+          select.disabled = true;
+          input.disabled = true;
+        }
+      });
+
+      // Скрыть кнопку "Рассчитать"
+      startBtn.style.display = "none";
+
+      // Показать кнопку "Сброс"
+      resetBtn.style.display = "inline-block";
     } else {
       alert("Ошибка: не выбран тип экрана и/или не введено количество");
     }
   },
+
+  reset: function () {
+    // Удаляем все дополнительные экраны, кроме первого
+    const additionalScreens = document.querySelectorAll(".screen");
+    for (let i = 1; i < additionalScreens.length; i++) {
+      additionalScreens[i].remove();
+    }
+
+    // Сбрасываем значения полей ввода к исходным
+    const inputFields = document.querySelectorAll("input[type=text]");
+    inputFields.forEach((input) => {
+      input.value = input.defaultValue; // Сбрасываем значение к значению по умолчанию
+    });
+
+    // Разблокируем все input[type=text] и select
+    const allInputsAndSelects = document.querySelectorAll(
+      "input[type=text], select"
+    );
+    allInputsAndSelects.forEach((item) => {
+      item.disabled = false;
+    });
+
+    // Скрываем кнопку "Сброс" если остался только один экран, иначе показываем
+    if (additionalScreens.length <= 1) {
+      resetBtn.style.display = "none";
+    } else {
+      resetBtn.style.display = "inline-block";
+    }
+
+    // Если остался только один экран, показываем кнопку "Рассчитать"
+    if (additionalScreens.length === 1) {
+      startBtn.style.display = "inline-block";
+    } else {
+      startBtn.style.display = "none";
+    }
+
+    // Возвращаем объект к исходному состоянию
+    this.title = "";
+    this.screens = [];
+    this.totalCountScreens = 0;
+    this.screenPrice = 0;
+    this.adaptive = true;
+    this.rollback = 0;
+    this.servicePricesPercent = 0;
+    this.servicePricesNumber = 0;
+    this.fullPrice = 0;
+    this.servicePercentPrice = 0;
+    this.servicesPercent = {};
+    this.servicesNumber = {};
+
+    // Если существует только один экран, клонируем его
+    if (additionalScreens.length === 1) {
+      const firstScreen = document.querySelector(".screen");
+      const clonedScreen = firstScreen.cloneNode(true);
+      firstScreen.after(clonedScreen);
+    }
+
+    // Обновляем отображение
+    this.showResult();
+
+    // Привязываем метод start к кнопке "Рассчитать" после сброса
+    startBtn.removeEventListener("click", this.start.bind(this)); // Удаляем предыдущее событие
+    startBtn.addEventListener("click", this.start.bind(this)); // Привязываем новое событие
+  },
+
   showResult: function () {
     total.value = this.screenPrice;
     totalCount.value = this.totalCountScreens;
