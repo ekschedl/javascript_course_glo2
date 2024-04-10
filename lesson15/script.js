@@ -39,9 +39,15 @@ const elementNew = new DomElement(
 );
 console.log(elementNew);
 
-// УСЛОЖНЕННОЕ  ЗАДАНИЕ: Создаем новый объект на основе класса DomElement
+// УСЛОЖНЕННОЕ  ЗАДАНИЕ
 
-const square = new DomElement(".square", 100, 100, "blue");
+// Обработчик события DOMContentLoaded
+document.addEventListener("DOMContentLoaded", function () {
+  const squareExtra = new DomElement(".extra-square", 300, 300, "blue");
 
-square.position = "absolute";
-square.createElement();
+  squareExtra.setPosition = function () {
+    const element = document.querySelector(this.selector); // Находим созданный элемент
+    element.style.position = "absolute"; //
+  };
+  squareExtra.setPosition(); // Задаем позицию абсолютной
+});
