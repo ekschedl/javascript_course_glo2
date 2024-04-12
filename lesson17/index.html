@@ -5,9 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+   
+  <div class="container">
+    <h1>Управление сотрудниками</h1>
+    <!-- Форма для ввода данных -->
+    <form id="Form">
+      <div class="form-group">
+        <label for="firstName">Имя:</label>
+        <input type="text" id="firstName" name="firstName" required>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Фамилия:</label>
+        <input type="text" id="lastName" name="lastName" required>
+      </div>
+      <div class="form-group">
+        <label for="age">Возраст:</label>
+        <input type="number" id="age" name="age" required>
+      </div>
+      <div class="form-group">
+        <label for="workExperienceInMonth">Опыт работы (мес):</label>
+        <input type="number" id="workExperienceInMonth" name="workExperienceInMonth" required>
+      </div>
+      <div class="form-group">
+        <label for="education">Наличие образования:</label>
+        <input type="checkbox" id="education" name="education">
+      </div>
+      <div class="form-group">
+        <label for="hasChildren">Наличие детей:</label>
+        <input type="checkbox" id="hasChildren" name="hasChildren">
+      </div>
+      <div class="form-group">
+        <label for="dateOfStart">Дата начала работы:</label>
+        <input type="date" id="dateOfStart" name="dateOfStart">
+      </div>
+      <div class="form-group">
+        <label for="profession">Выберите профессию:</label>
+        <select id="profession" name="profession" required>
+          <option value="" disabled selected>Выберите профессию</option>
+          <option value="Mechanic">Слесарь</option>
+          <option value="Driver">Водитель</option>
+        </select>
+      </div>
+      <button type="submit">Сохранить</button>
+    </form>
+
+    <!-- Таблица для отображения данных -->
+    <table id="Table">
+      <thead>
+        <tr>
+          <th>Имя</th>
+          <th>Фамилия</th>
+          <th>Возраст</th>
+          <th>Опыт работы (мес)</th>
+          <th>Наличие образования</th>
+          <th>Наличие детей</th>
+          <th>Дата начала работы</th>
+          <th>Профессия</th>
+          <th>Удалить</th>
+        </tr>
+      </thead>
+      <tbody id="TableBody">
+        <!-- Здесь будут добавляться строки таблицы с данными из localStorage -->
+      </tbody>
+    </table>
+  </div>
+
+    
+    
+    
+    
+    
+    
+     
+
    <script src="./script.js"></script> 
 </body>
 </html>
