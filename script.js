@@ -11,7 +11,16 @@ class First {
     hello();
   }
 }
-
+// так тоже будет работатьЮ class First {
+//     methodOfFirst() {
+//     console.log("Привет я метод родителя!");
+//     }
+//     }
+class First {
+  methodOfFirst() {
+    console.log("Привет я метод родителя!");
+  }
+}
 // Определение класса Second, который наследует от класса First
 class Second extends First {
   constructor() {
